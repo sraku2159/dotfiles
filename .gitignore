@@ -1,0 +1,11 @@
+*
+.**
+
+!.zshrc
+!.vimrc
+!.tmux.conf
+!gitignore_global
+
+
+!README.md
+!.gitignore
