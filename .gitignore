@@ -4,7 +4,8 @@
 !.zshrc
 !.vimrc
 !.tmux.conf
-!/git/**
+!git
+!git/**
 
 
 !README.md
