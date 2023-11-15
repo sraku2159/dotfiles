@@ -6,6 +6,7 @@
 !.tmux.conf
 !git
 !git/**
+!install.sh
 
 
 !README.md
