@@ -1,6 +1,8 @@
+# /bin/bash
+
 set -uex
 
-cd $(dirname $0)
+cd $(dirname ${BASH_SOURCE:-$0})
 
 function backup_originals() {
     if [ ! -d "$HOME"/.backups ]; then
