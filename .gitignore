@@ -4,7 +4,7 @@
 !.zshrc
 !.vimrc
 !.tmux.conf
-!gitignore_global
+!/git/**
 
 
 !README.md
