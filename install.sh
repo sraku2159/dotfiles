@@ -10,7 +10,7 @@ function backup_originals() {
     fi
     
     for f in .??*; do
-        [ "$f" = ".git" ] && continue
+        [ ! -e "~/$f" -o "$f" = ".git" ] && continue
         mv ~/"$f" ~/.backups
     done
 }
@@ -22,8 +22,8 @@ function create_link() {
     done
 }
 
-backup_originals();
-create_link();
+backup_originals
+create_link
 
 git config --global include.path "~/.gitconfig_shared"
-echo "\033[38;5;40m done \033[0m"
+echo -e "\033[38;5;40m done \033[0m"
