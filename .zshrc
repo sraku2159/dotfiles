@@ -1,7 +1,31 @@
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change
+# git
+autoload -Uz compinit && compinit
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '%b'
 
-#export SDKROOT="$(xcrun --show-sdk-path)"
-PROMPT="%F{green}%n@%m %1~ %# %f"
+function left-prompt {
+  name_t='064m%}'      # user name text clolr
+  name_b='000m%}'    # user name background color
+  path_t='166m%'
+  path_b='000m%}'
+  branch_t='075m%}'     # path text clolr
+  branch_b='000m%}'   # path background color
+  arrow='087m%}'   # arrow color
+  text_color='%{\e[38;5;'    # set text color
+  back_color='%{\e[30;48;5;' # set background color
+  reset='%{\e[0m%}'   # reset
+
+  user="${back_color}${name_b}${text_color}${name_t}"
+  path="${back_color}${path_b}${text_color}${path_t}"
+  branch="${back_color}${branch_b}${text_color}${branch_t}%%[\$vcs_info_msg_0_]${reset}"
+
+  echo -e "${user}%n%#@%m:${reset}${path} %~${reset}${branch}\n${text_color}${arrow}>${reset} "
+}
+
+PROMPT=`left-prompt`
 
 # alias
 alias pub="cat ~/.ssh/id_rsa.pub"
@@ -43,6 +67,7 @@ ansi () {
 function base64url() {
     echo -n $1 | base64 | tr "+/" "-_" | tr -d "="
 }
+
 
 #export
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
