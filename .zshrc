@@ -4,7 +4,7 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:git:*' formats '[%b]'
 
 function left-prompt {
   name_t='064m%}'      # user name text clolr
@@ -20,7 +20,7 @@ function left-prompt {
 
   user="${back_color}${name_b}${text_color}${name_t}"
   path="${back_color}${path_b}${text_color}${path_t}"
-  branch="${back_color}${branch_b}${text_color}${branch_t}%%[\$vcs_info_msg_0_]${reset}"
+  branch="${back_color}${branch_b}${text_color}${branch_t}%%\$vcs_info_msg_0_${reset}"
 
   echo -e "${user}%n%#@%m:${reset}${path} %~${reset}${branch}\n${text_color}${arrow}>${reset} "
 }
