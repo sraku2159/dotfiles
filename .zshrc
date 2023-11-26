@@ -73,10 +73,14 @@ function base64url() {
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export PATH="/usr/local/opt/llvm/bin:/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/var/nodebrew/current/bin:/opt/homebrew/opt/llvm/bin:$PATH"
-export NVM_DIR="$HOME/.nvm"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/var/nodebrew/current/bin:$PATH"
+[[ -d ~/.flutter ]] && export PATH="$PATH:$HOME/.flutter/bin/"
+[[ -d ~/.pub-cache ]] && export PATH="$PATH:$HOME/.pub-cache/bin"
+[[ -d ~/.nvm ]] && export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # setting ruby
 [[ -d ~/.rbenv  ]] && eval "$(~/.rbenv/bin/rbenv init - zsh)"
+
