@@ -1,3 +1,6 @@
 [core]
   excludesfile = ~/.config/git/gitignore_global
   editor = vim
+
+[init]
+  defautlBranch = main
