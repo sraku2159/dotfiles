@@ -9,7 +9,7 @@ zstyle ':vcs_info:git:*' formats '[%b]'
 function left-prompt {
   name_t='064m%}'      # user name text clolr
   name_b='000m%}'    # user name background color
-  path_t='166m%'
+  path_t='166m%}'
   path_b='000m%}'
   branch_t='075m%}'     # path text clolr
   branch_b='000m%}'   # path background color
