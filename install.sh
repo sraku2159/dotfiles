@@ -27,3 +27,6 @@ create_link
 
 git config --global include.path "~/.gitconfig_shared"
 echo -e "\033[38;5;40m done \033[0m"
+
+# install vim jetpack
+curl -fLo ~/.vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
