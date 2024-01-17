@@ -10,7 +10,7 @@ function backup_originals() {
     fi
     
     for f in .??*; do
-        [ ! -e "~/$f" -o "$f" = ".git" ] && continue
+        [ ! -e "$HOME/$(basename $f)" -o "$f" = ".git" ] && continue
         mv ~/"$f" ~/.backups
     done
 }
