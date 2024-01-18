@@ -70,17 +70,31 @@ function base64url() {
 
 
 #export
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-export PATH="/usr/local/opt/llvm/bin:/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/var/nodebrew/current/bin:$PATH"
-[[ -d ~/.flutter ]] && export PATH="$PATH:$HOME/.flutter/bin/"
-[[ -d ~/.pub-cache ]] && export PATH="$PATH:$HOME/.pub-cache/bin"
+
+function add_to_path() {
+  [[ $PATH == *:"$1":* ]] && return
+
+  if [[ $2 ]]; then
+    export PATH="$1:$PATH"
+  else
+    export PATH="$PATH:$1"
+  fi
+}
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+  add_to_path "/usr/local/opt/llvm/bin" true
+  add_to_path "/opt/homebrew/bin" true
+  add_to_path "/opt/homebrew/opt/llvm/bin" true
+  add_to_path "/opt/homebrew/var/nodebrew/current/bin" true
+fi
+[[ -d ~/.flutter ]] && add_to_path "$HOME/.flutter/bin"
+[[ -d ~/.pub-cache ]] && add_to_path "$HOME/.pub-cache/biin"
 [[ -d ~/.nvm ]] && export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # setting ruby
-[[ -d ~/.rbenv  ]] && eval "$(~/.rbenv/bin/rbenv init - zsh)"
-
+[[ -d ~/.rbenv && "$PATH" != *:"$HOME/.rbenv/shims":* ]] && eval "$(~/.rbenv/bin/rbenv init - zsh)"
+add_to_path "$HOME/ctags/bin"

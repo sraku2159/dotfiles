@@ -29,4 +29,17 @@ git config --global include.path "~/.gitconfig_shared"
 echo -e "\033[38;5;40m done \033[0m"
 
 # install vim jetpack
-curl -fLo ~/.vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
+taget="$HOME/.vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim"
+if [[ ! -e $taget ]]; then
+  curl -fLo $taget --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
+fi
+
+# build and install  ctags if there is no ctags command
+if [[ ! $(which ctags) ]]; then
+  git clone https://github.com/universal-ctags/ctags.git
+  cd ctags
+  ./autogen.sh
+  ./configure  --prefix="$HOME/ctags"
+  make
+  make install # may require extra privileges depending on where to install
+fi
