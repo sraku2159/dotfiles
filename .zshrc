@@ -30,7 +30,6 @@ PROMPT=`left-prompt`
 # alias
 alias pub="cat ~/.ssh/id_rsa.pub"
 alias ping="/sbin/ping"
-alias gcc=clang
 
 #utility
 function command_not_found_handler(){
@@ -89,6 +88,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   add_to_path "/opt/homebrew/opt/llvm/bin" true
   add_to_path "/opt/homebrew/var/nodebrew/current/bin" true
 fi
+
 [[ -d ~/.flutter ]] && add_to_path "$HOME/.flutter/bin"
 [[ -d ~/.pub-cache ]] && add_to_path "$HOME/.pub-cache/biin"
 [[ -d ~/.nvm ]] && export NVM_DIR="$HOME/.nvm"
@@ -98,3 +98,15 @@ fi
 # setting ruby
 [[ -d ~/.rbenv && "$PATH" != *:"$HOME/.rbenv/shims":* ]] && eval "$(~/.rbenv/bin/rbenv init - zsh)"
 add_to_path "$HOME/ctags/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+if [[ -d "$HOME/.goenv" ]]; then
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  eval "$(goenv init -)"
+  export PATH="$GOROOT/bin:$PATH"
+  export PATH="$PATH:$GOPATH/bin"
+fi
