@@ -96,7 +96,7 @@ fi
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # setting ruby
-[[ -d ~/.rbenv && "$PATH" != *:"$HOME/.rbenv/shims":* ]] && eval "$(~/.rbenv/bin/rbenv init - zsh)"
+[[ -d ~/.rbenv && "$PATH" != *:"$HOME/.rbenv/shims":* ]] && eval "$(rbenv init - zsh)"
 add_to_path "$HOME/ctags/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -110,3 +110,7 @@ if [[ -d "$HOME/.goenv" ]]; then
   export PATH="$GOROOT/bin:$PATH"
   export PATH="$PATH:$GOPATH/bin"
 fi
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# setting terraform
+terraform -install-autocomplete
