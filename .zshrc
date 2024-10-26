@@ -114,3 +114,6 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # setting terraform
 terraform -install-autocomplete
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
