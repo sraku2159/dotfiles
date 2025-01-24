@@ -30,6 +30,8 @@ PROMPT=`left-prompt`
 # alias
 alias pub="cat ~/.ssh/id_rsa.pub"
 alias ping="/sbin/ping"
+alias dp='docker compose'
+alias now="date '+%Y%m%d%H%M%S'"
 
 #utility
 function command_not_found_handler(){
@@ -70,8 +72,10 @@ function base64url() {
 
 #export
 
+# 1: path
+# 2: true if prepend
 function add_to_path() {
-  [[ $PATH == *:"$1":* ]] && return
+  [[ $PATH == *":$1:"* ]] && return
 
   if [[ $2 ]]; then
     export PATH="$1:$PATH"
@@ -81,7 +85,7 @@ function add_to_path() {
 }
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+  # export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
   add_to_path "/usr/local/opt/llvm/bin" true
   add_to_path "/opt/homebrew/bin" true
@@ -95,13 +99,9 @@ fi
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# setting ruby
-[[ -d ~/.rbenv && "$PATH" != *:"$HOME/.rbenv/shims":* ]] && eval "$(rbenv init - zsh)"
-add_to_path "$HOME/ctags/bin"
+alias bi='bundle config set --local path .bundle && bundle install'
+export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib/
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 if [[ -d "$HOME/.goenv" ]]; then
   export GOENV_ROOT="$HOME/.goenv"
@@ -110,10 +110,21 @@ if [[ -d "$HOME/.goenv" ]]; then
   export PATH="$GOROOT/bin:$PATH"
   export PATH="$PATH:$GOPATH/bin"
 fi
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+add_to_path $HOME/.nodebrew/current/bin true
 
 # setting terraform
-terraform -install-autocomplete
-
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+# complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# sdkman
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -f "$HOME/.sdkman/bin/sdkman-init.sh" && -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# setting ruby
+# 最後に追加する
+
+[[ -d ~/.rbenv && "$PATH" = *"/usr/bin"*"$HOME/.rbenv/shims"* ]] && export PATH=$( echo $PATH | sed "s/${HOME//\//\\/}\/.rbenv\/shims://g" )
+[[ -d ~/.rbenv && "$PATH" != *":$HOME/.rbenv/shims:"* ]] && eval "$(rbenv init - zsh)"
+add_to_path "$HOME/ctags/bin"
