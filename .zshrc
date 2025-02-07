@@ -32,6 +32,7 @@ alias pub="cat ~/.ssh/id_rsa.pub"
 alias ping="/sbin/ping"
 alias dp='docker compose'
 alias now="date '+%Y%m%d%H%M%S'"
+alias tf='terraform'
 
 #utility
 function command_not_found_handler(){
