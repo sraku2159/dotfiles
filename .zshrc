@@ -41,6 +41,11 @@ function command_not_found_handler(){
                 "| | | | |  _  | |__ --| |   _| |  -__| |  _  |\n" \
                 "|_____| |___._| |_____| |____| |_____| |_____|\n"
 }
+
+function docker-build-with-log() {
+  docker build --progress=plain $@ &> build.log
+}
+
 ansi () {
 	echo "echo -e \"following sentence\" or printf 'following sentence'"
         echo 'Example: \\(e or 033)[XXm string \\(e or 33)[0m'
@@ -116,6 +121,7 @@ add_to_path $HOME/.nodebrew/current/bin true
 
 # setting terraform
 autoload -U +X bashcompinit && bashcompinit
+source $HOME/.tenv.completion.zsh
 # complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 # sdkman
