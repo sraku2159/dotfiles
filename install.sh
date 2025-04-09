@@ -34,3 +34,10 @@ if [[ ! -e $taget ]]; then
   curl -fLo $taget --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
 fi
 
+cd
+
+curl -o .git-completion.sh \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o .git-prompt.sh \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+
