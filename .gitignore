@@ -5,10 +5,10 @@
 !.bashrc
 !.vimrc
 !.tmux.conf
+!.gitconfig*
 !git
 !git/**
 !install.sh
-!gitconfig*
 
 !README.md
 !.gitignore
