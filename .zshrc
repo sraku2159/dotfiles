@@ -123,9 +123,11 @@ fi
 add_to_path $HOME/.nodebrew/current/bin true
 
 # setting terraform
-autoload -U +X bashcompinit && bashcompinit
-source $HOME/.tenv.completion.zsh
-# complete -o nospace -C /opt/homebrew/bin/terraform terraform
+if type "tenv" > /dev/null 2>&1; then
+    autoload -U +X bashcompinit && bashcompinit
+    source $HOME/.tenv.completion.zsh
+    # complete -o nospace -C /opt/homebrew/bin/terraform terraform
+fi
 
 # sdkman
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

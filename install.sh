@@ -34,12 +34,10 @@ if [[ ! -e $taget ]]; then
   curl -fLo $taget --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
 fi
 
-# build and install  ctags if there is no ctags command
-if [[ ! $(which ctags) ]]; then
-  git clone https://github.com/universal-ctags/ctags.git
-  cd ctags
-  ./autogen.sh
-  ./configure  --prefix="$HOME/ctags"
-  make
-  make install # may require extra privileges depending on where to install
-fi
+cd
+
+curl -o .git-completion.sh \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o .git-prompt.sh \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+
