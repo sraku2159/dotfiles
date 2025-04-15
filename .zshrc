@@ -18,9 +18,12 @@ function left-prompt {
   back_color='%{\e[30;48;5;' # set background color
   reset='%{\e[0m%}'   # reset
 
-  user="${back_color}${name_b}${text_color}${name_t}"
-  path="${back_color}${path_b}${text_color}${path_t}"
-  branch="${back_color}${branch_b}${text_color}${branch_t}%%\$vcs_info_msg_0_${reset}"
+  #user="${back_color}${name_b}${text_color}${name_t}"
+  #path="${back_color}${path_b}${text_color}${path_t}"
+  #branch="${back_color}${branch_b}${text_color}${branch_t}%%\$vcs_info_msg_0_${reset}"
+  user="${text_color}${name_t}"
+  path="${text_color}${path_t}"
+  branch="${text_color}${branch_t}%%\$vcs_info_msg_0_${reset}"
 
   echo -e "${user}%n%#@%m:${reset}${path} %~${reset}${branch}\n${text_color}${arrow}>${reset} "
 }

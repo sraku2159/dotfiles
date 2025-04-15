@@ -2,6 +2,7 @@
 .**
 
 !.zshrc
+!.bashrc
 !.vimrc
 !.tmux.conf
 !git
