@@ -1,0 +1,9 @@
+[user]
+	name = sota-rakuma
+	email = robben2159@gmail.com
+[pull]
+	ff = only
+[core]
+    editor = vim
+[merge]
+    conflictstyle = zdiff3
