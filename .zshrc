@@ -120,6 +120,14 @@ if [[ -d "$HOME/.goenv" ]]; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
+if [[ -d "$HOME/go" ]]; then
+  latest=$(ls ~/go/bin | grep "^go[0-9]" | sort  -r | head -n 1)
+  if [[ -n "$latest" ]]; then
+    export GOROOT=$("$HOME/go/bin/$latest" env GOROOT)
+    export PATH=$GOROOT/bin:$PATH
+  fi
+fi
+
 add_to_path $HOME/.nodebrew/current/bin true
 
 # setting terraform
