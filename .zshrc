@@ -78,6 +78,10 @@ function base64url() {
     echo -n $1 | base64 | tr "+/" "-_" | tr -d "="
 }
 
+function cbline() {
+  git ls-files | grep $1 | xargs wc -l
+}
+
 
 #export
 
@@ -125,6 +129,8 @@ if [[ -d "$HOME/go" ]]; then
   if [[ -n "$latest" ]]; then
     export GOROOT=$("$HOME/go/bin/$latest" env GOROOT)
     export PATH=$GOROOT/bin:$PATH
+    # export GOPATH=$HOME/go
+    # export PATH=$PATH:$GOPATH/bin
   fi
 fi
 
