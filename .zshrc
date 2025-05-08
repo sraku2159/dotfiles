@@ -79,7 +79,7 @@ function base64url() {
 }
 
 function cbline() {
-  git ls-files | grep $1 | xargs wc -l
+  git ls-files | grep -E $1 | xargs wc -l
 }
 
 
