@@ -9,6 +9,8 @@
 !git
 !git/**
 !install.sh
+!vscode_setting
+!vscode_setting/**
 
 !README.md
 !.gitignore

@@ -1,0 +1,86 @@
+{
+    "files.autoSave": "afterDelay",
+    "github.copilot.editor.enableAutoCompletions": true,
+    "editor.indentSize": "tabSize",
+    "typescript.format.indentSwitchCase": false,
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "editor.rulers": [
+            120
+        ],
+        "editor.semanticHighlighting.enabled": true
+    },
+    "workbench.colorTheme": "Monokai",
+    "security.workspace.trust.untrustedFiles": "open",
+    "playwright.reuseBrowser": false,
+    "playwright.showTrace": false,
+    "editor.inlayHints.fontSize": 1,
+    "git.openRepositoryInParentFolders": "never",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "git.autofetch": true,
+    "C_Cpp.default.cppStandard": "c++23",
+    "C_Cpp.default.cStandard": "c23",
+    "gitlens.ai.experimental.model": "vscode",
+    "gitlens.ai.experimental.vscode.model": "copilot:gpt-4o",
+    "screencastMode.fontSize": 60,
+    "window.newWindowDimensions": "inherit",
+    "window.zoomLevel": 0.85,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "makefile.configureOnOpen": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "markdown.marp.enableHtml": true,
+    "go.toolsManagement.autoUpdate": true,
+    "redhat.telemetry.enabled": true,
+    "editor.cursorBlinking": "solid",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["<Leader>", "h"], "after": ["<C-w>", "h"] }, //window移動
+        { "before": ["<Leader>", "j"], "after": ["<C-w>", "j"] }, //window移動
+        { "before": ["<Leader>", "k"], "after": ["<C-w>", "k"] }, //window移動
+        { "before": ["<Leader>", "l"], "after": ["<C-w>", "l"] }, //window移動
+        { "before": ["<Leader>", "s"], "commands": [":s"] }, //水平に開く
+        { "before": ["<Leader>", "v"], "commands": [":v"] }, //水平にを閉じる
+        { "before": ["<Leader>", "s"], "commands": [":split"] }, //水平に開く
+        { "before": ["<Leader>", "v"], "commands": [":vsplit"] }, //水平にを閉じる
+    ],
+    "vscode-pets.theme": "beach",
+    "vscode-pets.petSize": "small",
+    "cmake.showOptionsMovedNotification": false,
+    "cline.preferredLanguage": "Japanese - 日本語",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.fontSize": 10,
+    "chat.mcp.discovery.enabled": true,
+    "mcp": {
+        "inputs": [],
+        "servers": {
+            "mcp-server-time": {
+                "command": "python",
+                "args": [
+                    "-m",
+                    "mcp_server_time",
+                    "--local-timezone=America/Los_Angeles"
+                ],
+                "env": {}
+            }
+        }
+    },
+    "dotfiles.repository": "https://github.com/sraku2159/dotfiles.git",
+    "dotfiles.installCommand": "install.sh",
+    "editor.tabSize": 2,
+}
