@@ -6,6 +6,15 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '[%b]'
 
+function get-holiday() {
+  start_year=$1
+  end_year=$2
+  # 内閣府による祝日情報の取得
+  holidays=$(curl -s 'https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv' | tail -n +2 | awk -F/ '{printf "%04d-%02d-%02d\n", $1, $2, $3}')
+  target_holidays=$(echo "$holidays" | awk -F- -v start="$start_year" -v end="$end_year" '$1 >= start && $1 <= end')
+  echo $( echo "$target_holidays" | tr '\n' ',' | sed 's/,$//')
+}
+
 function left-prompt {
   name_t='064m%}'      # user name text clolr
   name_b='000m%}'    # user name background color
@@ -154,3 +163,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -d ~/.rbenv && "$PATH" = *"/usr/bin"*"$HOME/.rbenv/shims"* ]] && export PATH=$( echo $PATH | sed "s/${HOME//\//\\/}\/.rbenv\/shims://g" )
 [[ -d ~/.rbenv && "$PATH" != *":$HOME/.rbenv/shims:"* ]] && eval "$(rbenv init - zsh)"
 add_to_path "$HOME/ctags/bin"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
