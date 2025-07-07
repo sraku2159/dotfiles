@@ -4,6 +4,8 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
+# #でコメントを有効にする(長ったらしいコマンドとかを途中で保存したいときに便利)
+setopt interactivecomments
 zstyle ':vcs_info:git:*' formats '[%b]'
 
 function get-holiday() {
