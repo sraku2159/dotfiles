@@ -41,3 +41,5 @@ curl -o .git-completion.sh \
 curl -o .git-prompt.sh \
     https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
+# install mise
+curl https://mise.run | sh
