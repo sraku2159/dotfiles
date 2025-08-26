@@ -47,6 +47,7 @@ alias ping="/sbin/ping"
 alias dp='docker compose'
 alias now="date '+%Y%m%d%H%M%S'"
 alias tf='terraform'
+alias claude='claude --mcp-config ~/.claude/.mcp.json'
 
 #utility
 function command_not_found_handler(){
