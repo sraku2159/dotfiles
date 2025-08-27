@@ -43,3 +43,20 @@ curl -o .git-prompt.sh \
 
 # install mise
 curl https://mise.run | sh
+
+
+# install tools with mise
+if command -v mise &> /dev/null; then
+  echo "✅ mise is installed"
+  echo "Version: $(mise --version)"
+  echo "Path: $(which mise)"
+else
+  echo "❌ mise is not installed"
+  exit 1
+fi
+
+mise use -g rust
+
+
+# install delta
+cargo install git-delta
