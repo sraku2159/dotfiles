@@ -47,6 +47,8 @@ alias ping="/sbin/ping"
 alias dp='docker compose'
 alias now="date '+%Y%m%d%H%M%S'"
 alias tf='terraform'
+alias bi='bundle config set --local path .bundle && bundle install'
+alias claude='claude --mcp-config ~/.claude/.mcp.json'
 
 #utility
 function command_not_found_handler(){
@@ -123,7 +125,6 @@ fi
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias bi='bundle config set --local path .bundle && bundle install'
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib/
 
 
