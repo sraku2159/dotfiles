@@ -59,12 +59,13 @@ mise use -g rust
 
 # install wezterm
 curl https://sh.rustup.rs -sSf | sh -s
-curl -LO https://github.com/wezterm/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22-src.tar.gz
-tar -xzf wezterm-20240203-110809-5046fc22-src.tar.gz
-cd wezterm-20240203-110809-5046fc22
+git clone --depth=1 --branch=main --recursive https://github.com/wezterm/wezterm.git
+cd wezterm
+git submodule update --init --recursive
 ./get-deps
 cargo build --release
 cargo run --release --bin wezterm -- start
+cp target/release/wezterm ~/.cargo/bin
 
 
 # install delta
