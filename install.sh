@@ -1,5 +1,18 @@
 #!/bin/bash
 
+function help() {
+  echo 'without option: install minimum'
+  echo '-h: display usage'
+  echo '-a: install all'
+  echo '--with-mise: install minimum with mise'
+  echo '--with-wezterm: install minimum with wezterm'
+}
+
+if [ "$1" = '-h' ]; then
+  help
+  exit 0
+fi
+
 set -uex
 
 cd $(dirname ${BASH_SOURCE:-$0})
@@ -42,31 +55,35 @@ curl -o .git-prompt.sh \
     https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
 # install mise
-curl https://mise.run | sh
 
+if [ "$1" = '--with-mise' -o "$1" = '-a' ]; then
+  curl https://mise.run | sh
 
-# install tools with mise
-if command -v mise &> /dev/null; then
-  echo "✅ mise is installed"
-  echo "Version: $(mise --version)"
-  echo "Path: $(which mise)"
-else
-  echo "❌ mise is not installed"
-  exit 1
+  # install tools with mise
+  if command -v mise &> /dev/null; then
+    echo "✅ mise is installed"
+    echo "Version: $(mise --version)"
+    echo "Path: $(which mise)"
+  else
+    echo "❌ mise is not installed"
+    exit 1
+  fi
+
+  mise use -g rust
 fi
 
-mise use -g rust
 
 # install wezterm
-curl https://sh.rustup.rs -sSf | sh -s
-git clone --depth=1 --branch=main --recursive https://github.com/wezterm/wezterm.git
-cd wezterm
-git submodule update --init --recursive
-./get-deps
-cargo build --release
-cargo run --release --bin wezterm -- start
-cp target/release/wezterm ~/.cargo/bin
-
+if [ "$1" = '--with-wezterm' -o "$1" = '-a' ]; then
+  curl https://sh.rustup.rs -sSf | sh -s
+  git clone --depth=1 --branch=main --recursive https://github.com/wezterm/wezterm.git
+  cd wezterm
+  git submodule update --init --recursive
+  ./get-deps
+  cargo build --release
+  cargo run --release --bin wezterm -- start
+  cp target/release/wezterm target/release/wezterm-gui ~/.cargo/bin
+fi
 
 # install delta
 cargo install git-delta
