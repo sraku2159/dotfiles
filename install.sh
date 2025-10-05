@@ -63,14 +63,7 @@ fi
 
 # install wezterm
 if [ "$1" = '--with-wezterm' -o "$1" = '-a' ]; then
-  curl https://sh.rustup.rs -sSf | sh -s
-  git clone --depth=1 --branch=main --recursive https://github.com/wezterm/wezterm.git
-  cd wezterm
-  git submodule update --init --recursive
-  ./get-deps
-  cargo build --release
-  cargo run --release --bin wezterm -- start
-  cp target/release/wezterm target/release/wezterm-gui ~/.cargo/bin
+  brew install --cask wezterm
 fi
 
 # install delta
