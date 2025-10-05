@@ -8,6 +8,8 @@
 !.gitconfig*
 !.config
 !.config/**
+.config/packer
+.config/packer/**
 !git
 !git/**
 !install.sh
