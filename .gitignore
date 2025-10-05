@@ -6,6 +6,8 @@
 !.vimrc
 !.tmux.conf
 !.gitconfig*
+!.config
+!.config/**
 !git
 !git/**
 !install.sh
