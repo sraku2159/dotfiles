@@ -73,5 +73,40 @@ config.inactive_pane_hsb = {
 -- setting shell
 config.default_prog = { '/bin/zsh' }
 
+-- setttin launch_menu
+config.launch_menu = {
+  { args = {'top'}},
+  { args = {'ls', '-al'}},
+}
+
+-- keybinds
+-- timeout_milliseconds defaults to 1000 and can be omitted
+local act = wezterm.action
+config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
+config.keys = {
+  {
+    key = '|',
+    mods = 'LEADER|SHIFT',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
+  {
+    key = 'a',
+    mods = 'LEADER|CTRL',
+    action = wezterm.action.SendKey { key = 'a', mods = 'CTRL' },
+  },
+  {
+    key = '-',
+    mods = 'LEADER',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 's',
+    mods = 'LEADER',
+    action = act.PaneSelect,
+  },
+  { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
+}
+
 -- Finally, return the configuration to wezterm:
 return config
