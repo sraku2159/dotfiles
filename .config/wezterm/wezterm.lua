@@ -1,8 +1,8 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
--- This will hold the configuration.
-local config = wezterm.config_builder()
+local merge_table = require("utils.merge_table")
+local config = merge_table(require("background"), require("keybinids"))
 
 -- This is where you actually apply your config choices.
 
@@ -50,7 +50,6 @@ config.colors = {
 -- setting background image
 -- todo: 別ファイルへの切り出し
 
-config.window_background_image = "/Users/sotanakano/playground/my_site/frontend/misc/refs/face_tunnel.png"
 config.window_background_image_hsb = {
 	-- Darken the background image by reducing it to 1/3rd
 	brightness = 0.1,
