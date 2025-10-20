@@ -4,4 +4,4 @@ idiomatic_version_file_enable_tools = ["ruby"]
 [tools]
 aws-cli = "latest"
 docker-cli = "latest"
-node = "latest"
+node = "24.10.0"

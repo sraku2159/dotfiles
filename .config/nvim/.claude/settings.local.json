@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "awslabs-aws-documentation-mcp-server"
+  ],
+  "enableAllProjectMcpServers": true
+}
