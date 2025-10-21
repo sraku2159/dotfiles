@@ -7,13 +7,6 @@ require("mason-lspconfig").setup({
     "cmake",
     "cssls",
     "vtsls",
-    "rust-analyzer",
+    "rust_analyzer",
   },
-})
-
--- auto lspconfig setting
-require("mason-lspconfig").setup_handlers({
-  function(server_name)
-    require("lspconfig")[server_name].setup({})
-  end,
 })
