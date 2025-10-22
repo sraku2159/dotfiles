@@ -5,3 +5,5 @@
 local keymap = vim.keymap
 
 keymap.set("n", ",", "<Plug>(customPrefix)", { silent = true })
+
+keymap.set("t", "<C-[>", "<C-/><C-n>")
