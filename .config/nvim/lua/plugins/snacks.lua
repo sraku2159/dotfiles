@@ -8,6 +8,13 @@ return {
           explorer = { hidden = true },
         },
       },
+      explorer = {
+        keys = {
+          filter = {
+            ["<esc>"] = { "focus", mode = "n" },
+          },
+        },
+      },
     },
   },
 }

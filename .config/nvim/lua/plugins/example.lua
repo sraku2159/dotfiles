@@ -2,6 +2,10 @@
 -- stylua: ignore
 if true then return {} end
 
+-- ワードがどこにあるかを表示してくれるプラグイン
+-- コメントアウトのプラグイン
+-- どこの関数の中にいるかを表示してくれるプラグイン
+
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --
 -- In your plugin files, you can:

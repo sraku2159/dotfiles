@@ -6,4 +6,6 @@ local keymap = vim.keymap
 
 keymap.set("n", ",", "<Plug>(customPrefix)", { silent = true })
 
-keymap.set("t", "<C-[>", "<C-/><C-n>")
+keymap.set("t", "<C-[>", "<C-\\><C-n>")
+
+-- エクスプローラの検索バーにカーソルが残ってしまっている問題を解決する
