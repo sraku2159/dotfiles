@@ -8,6 +8,7 @@ return {
           "bashls",
           "clangd",
           "cmake",
+          "gopls",
           "cssls",
           "vtsls",
           "rust_analyzer",
