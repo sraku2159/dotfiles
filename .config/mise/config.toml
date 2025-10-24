@@ -2,8 +2,9 @@
 idiomatic_version_file_enable_tools = ["ruby"]
 
 [tools]
-aws-cli = "latest"
 docker-cli = "latest"
 fd = "latest"
 node = "24.10.0"
 ripgrep = "latest"
+python = "latest"
+aws-cli = "latest"
