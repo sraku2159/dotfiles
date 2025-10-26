@@ -26,7 +26,19 @@ function create_link() {
 
 create_link
 
-git config --global include.path "~/.gitconfig_shared"
+# Setup git configuration files
+mkdir -p ~/.config/git
+cd git
+for f in .gitconfig_* gitconfig gitignore_global; do
+    [ -f "$f" ] && ln -snvf $PWD/"$f" ~/.config/git/
+done
+cd ..
+
+# Configure git to include additional configs
+git config --global include.path "~/.config/git/.gitconfig_shared"
+git config --global include.path "~/.config/git/.gitconfig_delta"
+git config --global core.excludesfile "~/.config/git/gitignore_global"
+
 echo -e "\033[38;5;40m done \033[0m"
 
 # install vim jetpack
