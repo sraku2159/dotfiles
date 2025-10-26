@@ -49,18 +49,6 @@ curl -o .git-prompt.sh \
 
 if [ "$1" = '--with-mise' -o "$1" = '-a' ]; then
   curl https://mise.run | sh
-
-  # install tools with mise
-  if command -v mise &>/dev/null; then
-    echo "✅ mise is installed"
-    echo "Version: $(mise --version)"
-    echo "Path: $(which mise)"
-  else
-    echo "❌ mise is not installed"
-    exit 1
-  fi
-
-  mise use -g rust
 fi
 
 # install wezterm
@@ -68,5 +56,3 @@ if [ "$1" = '--with-wezterm' -o "$1" = '-a' ]; then
   brew install --cask wezterm
 fi
 
-# install delta
-cargo install git-delta

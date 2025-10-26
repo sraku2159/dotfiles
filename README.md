@@ -5,3 +5,6 @@ npmで管理しているもの
 
 > [!NOTE]
 > npmで管理しているものもdotfilesで管理できるかどうか確かめる
+
+cargoで管理しているもの
+* git-delta
