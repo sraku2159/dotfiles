@@ -6,6 +6,7 @@
 !.vimrc
 !.tmux.conf
 !.gitconfig*
+!.mcp.json
 !.config
 !.config/**
 .config/packer
