@@ -18,26 +18,17 @@ set -ex
 cd $(dirname ${BASH_SOURCE:-$0})
 
 function create_link() {
-    for f in .??*; do
-        [ "$f" = ".git" ] && continue
-        ln -snvf $PWD/"$f" ~/
-    done
+  for f in .??*; do
+    [ "$f" = ".git" ] && continue
+    ln -snvf $PWD/"$f" ~/
+  done
 }
 
 create_link
 
-# Setup git configuration files
-mkdir -p ~/.config/git
-cd git
-for f in .gitconfig_* gitconfig gitignore_global; do
-    [ -f "$f" ] && ln -snvf $PWD/"$f" ~/.config/git/
-done
-cd ..
-
 # Configure git to include additional configs
 git config --global include.path "~/.config/git/.gitconfig_shared"
 git config --global include.path "~/.config/git/.gitconfig_delta"
-git config --global core.excludesfile "~/.config/git/gitignore_global"
 
 echo -e "\033[38;5;40m done \033[0m"
 
@@ -50,9 +41,9 @@ fi
 cd
 
 curl -o .git-completion.sh \
-    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+  https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 curl -o .git-prompt.sh \
-    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+  https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
 # install mise
 
@@ -60,7 +51,7 @@ if [ "$1" = '--with-mise' -o "$1" = '-a' ]; then
   curl https://mise.run | sh
 
   # install tools with mise
-  if command -v mise &> /dev/null; then
+  if command -v mise &>/dev/null; then
     echo "✅ mise is installed"
     echo "Version: $(mise --version)"
     echo "Path: $(which mise)"
@@ -71,7 +62,6 @@ if [ "$1" = '--with-mise' -o "$1" = '-a' ]; then
 
   mise use -g rust
 fi
-
 
 # install wezterm
 if [ "$1" = '--with-wezterm' -o "$1" = '-a' ]; then
