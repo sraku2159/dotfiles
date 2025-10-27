@@ -5,13 +5,20 @@ return {
       picker = {
         sources = {
           files = { hidden = true },
-          explorer = { hidden = true },
-        },
-      },
-      explorer = {
-        keys = {
-          filter = {
-            ["<esc>"] = { "focus", mode = "n" },
+          explorer = {
+            hidden = true,
+            win = {
+              input = {
+                keys = {
+                  ["<C-l>"] = "focus_list", -- list windowにフォーカス
+                },
+              },
+              list = {
+                keys = {
+                  ["<C-h>"] = "focus_input", -- input windowに戻る
+                },
+              },
+            },
           },
         },
       },
