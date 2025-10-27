@@ -1,1 +1,10 @@
-/Users/sotanakano/dotfiles/git/gitconfig
+[include]
+  path = ~/.config/git/.gitconfig_delta
+  path = ~/.config/git/.gitconfig_shared
+
+[core]
+  editor = vim
+
+[init]
+  defautlBranch = main
+

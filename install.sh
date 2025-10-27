@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function help() {
+help() {
   echo 'without option: install minimum'
   echo '-h: display usage'
   echo '-a: install all'
@@ -17,7 +17,7 @@ set -ex
 
 cd $(dirname ${BASH_SOURCE:-$0})
 
-function create_link() {
+create_link() {
   for f in .??*; do
     [ "$f" = ".git" ] && continue
     ln -snvf $PWD/"$f" ~/
@@ -55,4 +55,3 @@ fi
 if [ "$1" = '--with-wezterm' -o "$1" = '-a' ]; then
   brew install --cask wezterm
 fi
-

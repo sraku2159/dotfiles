@@ -1,1 +1,10 @@
-/Users/sotanakano/dotfiles/git/.gitconfig_shared
+[user]
+	name = sraku2159
+	email = robben2159@gmail.com
+[pull]
+	ff = only
+[core]
+    editor = vim
+[merge]
+    conflictstyle = zdiff3
+
