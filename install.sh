@@ -26,10 +26,6 @@ create_link() {
 
 create_link
 
-# Configure git to include additional configs
-git config --global include.path "~/.config/git/.gitconfig_shared"
-git config --global include.path "~/.config/git/.gitconfig_delta"
-
 echo -e "\033[38;5;40m done \033[0m"
 
 # install vim jetpack
