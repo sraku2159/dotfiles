@@ -3,11 +3,12 @@ idiomatic_version_file_enable_tools = ["ruby"]
 
 [tools]
 rust="latest"
+python = "latest"
+node = "24.10.0"
+go = "latest"
 docker-cli = "latest"
 fd = "latest"
-node = "24.10.0"
 ripgrep = "latest"
-python = "latest"
 aws-cli = "latest"
 kubectl = "latest"
 terraform = "latest"

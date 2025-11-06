@@ -110,6 +110,8 @@ function add_to_path() {
   fi
 }
 
+add_to_path "/usr/local/bin"
+
 if [[ "$(uname)" == "Darwin" ]]; then
   # export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
@@ -126,25 +128,6 @@ fi
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib/
-
-
-if [[ -d "$HOME/.goenv" ]]; then
-  export GOENV_ROOT="$HOME/.goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
-  eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
-fi
-
-if [[ -d "$HOME/go" ]]; then
-  latest=$(ls ~/go/bin | grep "^go[0-9]" | sort  -r | head -n 1)
-  if [[ -n "$latest" ]]; then
-    export GOROOT=$("$HOME/go/bin/$latest" env GOROOT)
-    export PATH=$GOROOT/bin:$PATH
-    # export GOPATH=$HOME/go
-    # export PATH=$PATH:$GOPATH/bin
-  fi
-fi
 
 add_to_path $HOME/.nodebrew/current/bin true
 

@@ -124,45 +124,45 @@ return {
       LazyVim.format.register(LazyVim.lsp.formatter())
 
       -- setup keymaps
-      LazyVim.lsp.on_attach(function(client, buffer)
-        require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
-      end)
-
-      LazyVim.lsp.setup()
-      LazyVim.lsp.on_dynamic_capability(require("lazyvim.plugins.lsp.keymaps").on_attach)
+      -- LazyVim.lsp.on_attach(function(client, buffer)
+      --   require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
+      -- end)
+      --
+      -- LazyVim.lsp.setup()
+      -- LazyVim.lsp.on_dynamic_capability(require("lazyvim.plugins.lsp.keymaps").on_attach)
 
       -- inlay hints
-      if opts.inlay_hints.enabled then
-        LazyVim.lsp.on_supports_method("textDocument/inlayHint", function(client, buffer)
-          if
-              vim.api.nvim_buf_is_valid(buffer)
-              and vim.bo[buffer].buftype == ""
-              and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
-          then
-            vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
-          end
-        end)
-      end
+      -- if opts.inlay_hints.enabled then
+      --   LazyVim.lsp.on_supports_method("textDocument/inlayHint", function(client, buffer)
+      --     if
+      --         vim.api.nvim_buf_is_valid(buffer)
+      --         and vim.bo[buffer].buftype == ""
+      --         and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
+      --     then
+      --       vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+      --     end
+      --   end)
+      -- end
 
       -- folds
-      if opts.folds.enabled then
-        LazyVim.lsp.on_supports_method("textDocument/foldingRange", function(client, buffer)
-          if LazyVim.set_default("foldmethod", "expr") then
-            LazyVim.set_default("foldexpr", "v:lua.vim.lsp.foldexpr()")
-          end
-        end)
-      end
+      -- if opts.folds.enabled then
+      --   LazyVim.lsp.on_supports_method("textDocument/foldingRange", function(client, buffer)
+      --     if LazyVim.set_default("foldmethod", "expr") then
+      --       LazyVim.set_default("foldexpr", "v:lua.vim.lsp.foldexpr()")
+      --     end
+      --   end)
+      -- end
 
       -- code lens
-      if opts.codelens.enabled and vim.lsp.codelens then
-        LazyVim.lsp.on_supports_method("textDocument/codeLens", function(client, buffer)
-          vim.lsp.codelens.refresh()
-          vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-            buffer = buffer,
-            callback = vim.lsp.codelens.refresh,
-          })
-        end)
-      end
+      -- if opts.codelens.enabled and vim.lsp.codelens then
+      --   LazyVim.lsp.on_supports_method("textDocument/codeLens", function(client, buffer)
+      --     vim.lsp.codelens.refresh()
+      --     vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+      --       buffer = buffer,
+      --       callback = vim.lsp.codelens.refresh,
+      --     })
+      --   end)
+      -- end
 
       -- diagnostics
       if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
