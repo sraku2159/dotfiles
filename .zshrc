@@ -98,6 +98,8 @@ function cbline() {
 
 #export
 
+export EDITOR="nvim"
+
 # 1: path
 # 2: true if prepend
 function add_to_path() {
