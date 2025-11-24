@@ -49,7 +49,7 @@ alias now="date '+%Y%m%d%H%M%S'"
 alias tf='terraform'
 alias bi='bundle config set --local path .bundle && bundle install'
 alias glog='git log --oneline --graph'
-alias k = 'kubctl'
+alias k='kubectl'
 
 #utility
 function command_not_found_handler(){
