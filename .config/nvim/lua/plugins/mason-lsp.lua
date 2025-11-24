@@ -12,6 +12,8 @@ return {
           "cssls",
           "vtsls",
           "rust_analyzer",
+          "tflint",
+          "terraformls",
         },
       })
     end,
