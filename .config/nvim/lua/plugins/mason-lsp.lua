@@ -14,6 +14,7 @@ return {
           "rust_analyzer",
           "tflint",
           "terraformls",
+          "lean-language-server",
         },
       })
     end,
