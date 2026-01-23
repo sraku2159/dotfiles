@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo:*)",
+      "Bash(zsh -l -c 'echo $PATH | tr \"\"\"\":\"\"\"\" \"\"\"\"\\n\"\"\"\"')",
+      "Bash(zsh:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(/Users/sotanakano/.local/share/mise/installs/node/24.10.0/bin/npm --version)",
+      "Bash(ln:*)",
+      "Bash(npm --version)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "awslabs-aws-documentation-mcp-server"
+  ]
+}
