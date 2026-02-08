@@ -18,13 +18,13 @@ function get-holiday() {
 }
 
 function left-prompt {
-  name_t='064m%}'      # user name text clolr
+  name_t='121m%}'      # user name text color (bright green)
   name_b='000m%}'    # user name background color
-  path_t='166m%}'
+  host_t='117m%}'      # host name text color (bright sky blue)
+  path_t='228m%}'      # path text color (bright yellow)
   path_b='000m%}'
-  branch_t='075m%}'     # path text clolr
-  branch_b='000m%}'   # path background color
-  arrow='087m%}'   # arrow color
+  arrow='183m%}'       # arrow color (soft lavender/purple)
+  time_t='156m%}'      # time text color (bright mint/green)
   text_color='%{\e[38;5;'    # set text color
   back_color='%{\e[30;48;5;' # set background color
   reset='%{\e[0m%}'   # reset
@@ -33,13 +33,26 @@ function left-prompt {
   #path="${back_color}${path_b}${text_color}${path_t}"
   #branch="${back_color}${branch_b}${text_color}${branch_t}%%\$vcs_info_msg_0_${reset}"
   user="${text_color}${name_t}"
+  host="${text_color}${host_t}"
   path="${text_color}${path_t}"
   branch="${text_color}${branch_t}%%\$vcs_info_msg_0_${reset}"
+  time="${text_color}${time_t}[%T]${reset}"
 
-  echo -e "${user}%n%#@%m:${reset}${path} %~${reset}${branch}\n${text_color}${arrow}>${reset} "
+  echo -e "${user}%#%n${reset}@${host}%m:${reset} ${path}%~${reset} ${text_color}${arrow}❯${reset} "
+}
+
+function right-prompt {
+  branch_t='228'      # branch text color (soft lemon/yellow - alternating 5)
+  time_t='156'        # time text color (soft mint/green - alternating 6)
+
+  branch="%F{${branch_t}}\$vcs_info_msg_0_%f"
+  time="%F{${time_t}}[%T]%f"
+
+  echo "${branch} ${time}"
 }
 
 PROMPT=`left-prompt`
+RPROMPT=`right-prompt`
 
 # alias
 alias pub="cat ~/.ssh/id_rsa.pub"
@@ -50,6 +63,7 @@ alias tf='terraform'
 alias bi='bundle config set --local path .bundle && bundle install'
 alias glog='git log --oneline --graph'
 alias k='kubectl'
+alias atree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
 
 #utility
 function command_not_found_handler(){
