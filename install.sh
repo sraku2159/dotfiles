@@ -13,20 +13,28 @@ if [ "$1" = '-h' ]; then
   exit 0
 fi
 
-set -ex
+set -eu
 
 cd $(dirname ${BASH_SOURCE:-$0})
 
 create_link() {
   for f in .??*; do
     [ "$f" = ".git" ] && continue
+    [ "$f" = ".claude" ] && continue
     ln -snvf $PWD/"$f" ~/
   done
 }
 
 create_link
 
-echo -e "\033[38;5;40m done \033[0m"
+# link claude config files to ~/.claude/
+mkdir -p ~/.claude
+xattr -dr com.apple.provenance ~/.claude 2>/dev/null || true
+for f in .config/.claude/*; do
+  ln -snvf "$PWD/$f" ~/.claude/
+done
+
+echo -e "\033[38;5;40m creating link to config is done \033[0m"
 
 # install vim jetpack
 taget="$HOME/.vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim"
