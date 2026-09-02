@@ -1,0 +1,5 @@
+{
+  "enabledMcpjsonServers": [
+    "awslabs-aws-documentation-mcp-server"
+  ]
+}

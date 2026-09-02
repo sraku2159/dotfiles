@@ -78,34 +78,26 @@ config.launch_menu = {
   { args = { "ls", "-al" } },
 }
 
--- keybinds
--- timeout_milliseconds defaults to 1000 and can be omitted
-local act = wezterm.action
-config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
-config.keys = {
-  {
-    key = "|",
-    mods = "LEADER|SHIFT",
-    action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-  },
-  -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
-  -- {
-  --   key = 'a',
-  --   mods = 'LEADER|CTRL',
-  --   action = wezterm.action.SendKey { key = 'a', mods = 'CTRL' },
-  -- },
-  {
-    key = "-",
-    mods = "LEADER",
-    action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-  },
-  {
-    key = "s",
-    mods = "LEADER",
-    action = act.PaneSelect,
-  },
-  { key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
-}
+-- keybinds は keybinds.lua に定義（leader含む）
+
+-- workspace: 全workspaceを左ステータスに並べ、現在地を強調
+local mux = wezterm.mux
+wezterm.on("update-status", function(window)
+  local current = window:active_workspace()
+  local parts = {}
+  for _, name in ipairs(mux.get_workspace_names()) do
+    if name == current then
+      table.insert(parts, { Attribute = { Intensity = "Bold" } })
+      table.insert(parts, { Foreground = { Color = "#f9e2af" } })
+      table.insert(parts, { Text = " [" .. name .. "] " })
+    else
+      table.insert(parts, { Foreground = { Color = "#6c7086" } })
+      table.insert(parts, { Text = "  " .. name .. "  " })
+    end
+    table.insert(parts, "ResetAttributes")
+  end
+  window:set_left_status(wezterm.format(parts))
+end)
 
 -- Finally, return the configuration to wezterm:
 return config
