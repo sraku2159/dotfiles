@@ -61,6 +61,16 @@ config.keys = {
       end),
     }),
   },
+  -- キーバインド一覧を新しいタブで表示（tmuxの prefix+? 相当）
+  {
+    key = "?",
+    mods = "LEADER|SHIFT",
+    action = act.SpawnCommandInNewTab({
+      -- GUI起動のシェルはPATHが最小限でweztermを見つけられないため絶対パスで指定
+      args = { "/bin/sh", "-c", wezterm.executable_dir .. "/wezterm show-keys | less" },
+    }),
+  },
+
   -- tab: 既存タブのリネーム
   {
     key = ",",
