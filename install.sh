@@ -21,6 +21,13 @@ create_link() {
   for f in .??*; do
     [ "$f" = ".git" ] && continue
     [ "$f" = ".claude" ] && continue
+
+    target="$HOME/$f"
+
+    if [ -e "$target" ] && [ ! -L "$target" ]; then
+        mv "$target" "$target.bak"
+    fi
+
     ln -snvf $PWD/"$f" ~/
   done
 }

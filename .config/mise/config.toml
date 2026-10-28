@@ -14,3 +14,6 @@ kubectl = "latest"
 terraform = "latest"
 eksctl = "latest"
 helm = "latest"
+neovim = "latest"
+delta = "latest"
+
