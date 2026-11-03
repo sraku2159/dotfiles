@@ -18,4 +18,5 @@ neovim = "latest"
 delta = "latest"
 gh = "latest"
 glab = "latest"
+gitleaks = "8.30.1"
 

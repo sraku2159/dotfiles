@@ -19,3 +19,6 @@
 
 !README.md
 !.gitignore
+.config/.claude/skills/synced/
+.config/1Password/telemetry-enabled
+.config/go/telemetry/
